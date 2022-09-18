@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,7 +13,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('tickets.index');
 });
+Route::get('tickets/list', [TicketController::class, 'index'])->name('tickets.index');
+Route::get('tickets/search', [TicketController::class, 'search']);
