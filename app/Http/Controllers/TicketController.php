@@ -12,7 +12,7 @@ class TicketController extends Controller
 {
     public function index(): View
     {
-        $tickets = TicketList::all();
+        $tickets = TicketList::latest()->get();
         return view('tickets.index', compact('tickets'));
     }
 

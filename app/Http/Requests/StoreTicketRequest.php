@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\EventNameRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\ValidationException;
 
@@ -25,10 +26,17 @@ class StoreTicketRequest extends FormRequest
     public function rules()
     {
         return [
-            'event_name' => ['string', 'required', 'max:50'],
+            'event_name' => ['string', 'required', 'max:50', new EventNameRule()],
             'currency' => ['string', 'required', 'in:GBP,USD,EUR'],
             'quantity_initial' => ['integer', 'required', 'min:1'],
             'quantity_available' => ['integer', 'required', 'min:1'],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'currency.in' => "Currency must be in USD, GBP, EUR"
         ];
     }
 

@@ -8,7 +8,6 @@ use App\Http\Resources\TicketResource;
 use App\Models\TicketList;
 use App\Services\TicketOrderService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class TicketController extends Controller
 {
